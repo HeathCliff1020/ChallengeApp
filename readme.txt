@@ -13,3 +13,5 @@ INSERT INTO users(username, password, email) VALUES("Heath Cliff", "ThisisCool",
 
 This change is made by Amber to test synching of the project.
 This change is made by Amber to test synching of the project. Part 2.
+
+This is a change made by Mukesh to test the synching of the project.
