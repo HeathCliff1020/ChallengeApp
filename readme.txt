@@ -10,3 +10,5 @@ CREATE TABLE users(
 
 
 INSERT INTO users(username, password, email) VALUES("Heath Cliff", "ThisisCool", "heathcliff1020@gmail.com");
+
+This change is made by Amber to test synching of the project.
