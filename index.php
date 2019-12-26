@@ -3,6 +3,8 @@
 <?php 
 	
     session_start();
+   
+    unset($_SESSION["verify"]);
     
     if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)
     {

@@ -66,6 +66,16 @@ body
 	content: "\f023";
 }
 
+.form-group:nth-last-of-type(3)::before
+{
+	content: "\f199";
+}
+
+.form-group:nth-last-of-type(2)::before
+{
+	content: "\f023";
+}
+
 button
 {
 	width: 40%;

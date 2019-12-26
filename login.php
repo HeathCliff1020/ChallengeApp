@@ -2,6 +2,8 @@
 // Initialize the session
 session_start();
  
+unset($_SESSION["verify"]);
+
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
 {
     header("location: index.php");
@@ -45,23 +47,37 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     	$username = mysqli_real_escape_string($link, $username);
     	$password = mysqli_real_escape_string($link, $password);
 
+    	$password = md5($password);
+
     	$query="select * from users where username='$username' AND password='$password'";
 
 		if($run_query = mysqli_query($link, $query))
 		{
-	    
+    
 	    	$check_user = mysqli_num_rows($run_query);
 
 	    	if ($check_user > 0)
 	   		{
-	            session_start();
-	            
-	            // Store data in session variables
-	            $_SESSION["loggedin"] = true;
-	            $_SESSION["id"] = $id;
-	            $_SESSION["username"] = $username;                                
-	            // Redirect user to welcome page
-	            header("location: login.php");
+
+	   			$user = mysqli_fetch_assoc($run_query);
+      
+      			if ($user['is_verified'] == 0)
+      			{
+      				echo "Email not verified!";
+      			}
+
+      			else
+      			{
+
+		            session_start();
+		            
+		            // Store data in session variables
+		            $_SESSION["loggedin"] = true;
+		            $_SESSION["id"] = $id;
+		            $_SESSION["username"] = $username;                                
+		            // Redirect user to welcome page
+		            header("location: login.php");
+		        }
 	        } 
 	        else
 	        {
